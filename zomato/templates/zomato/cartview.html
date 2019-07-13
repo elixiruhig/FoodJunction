@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Cart | FoodJunction</title>
+</head>
+<body>
+
+<div class="container">
+    <ul type="None">
+        {% for txn in txns %}
+            <li><p style="float: left">{{ txn.item.name }}</p><p style="float: right">${{ txn.item.price }}</p></li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>
