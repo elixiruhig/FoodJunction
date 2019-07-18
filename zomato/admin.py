@@ -48,7 +48,7 @@ class cart_admin(admin.ModelAdmin):
     ordering = ('transaction_id',)
 
 admin.site.register(Cart, cart_admin)
-
+admin.site.register(Delivery)
 admin.site.register(Dish)
 admin.site.register(Transaction)
 admin.site.unregister(Group2)

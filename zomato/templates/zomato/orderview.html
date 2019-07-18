@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your order</title>
+</head>
+<body>
+<div class="container"></div>
+<ul>
+    {% for order in orders %}
+        <li>
+        <div>
+            Order id: {{ order.transaction_id }}<br>
+            Price: {{ order.price }}<br>
+            Duration: {{ order.duration }}<br>
+            Status : {{ order.status }}<br>
+            Hotel : {{ order.hotel }}<br>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+</div>
+</body>
+</html>

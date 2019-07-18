@@ -21,15 +21,10 @@
       <a class="navbar-brand" href="{% url 'zomato:homeview' %}">FoodJunction</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Page 2</a></li>
+      <li class="active"><a href="{% url 'zomato:homeview' %}">Home</a></li>
+
+      <li><a href="#">Hotels</a></li>
+      <li><a href="#">Dishes</a></li>
     </ul>
       {% if not user.is_authenticated %}
     <ul class="nav navbar-nav navbar-right">
@@ -39,7 +34,7 @@
           {% else %}
           <ul class="nav navbar-nav navbar-right">
       <li><a href="{% url 'zomato:user_logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-      <li><a href="{% url 'zomato:my_cart' user.user_id %}"><span class="glyphicon glyphicon-shopping-cart"></span> My Cart</a></li>
+      <li><a href="{% url 'zomato:cartview' user.user_id %}"><span class="glyphicon glyphicon-shopping-cart"></span> My Cart</a></li>
     </ul>
       {% endif %}
   </div>

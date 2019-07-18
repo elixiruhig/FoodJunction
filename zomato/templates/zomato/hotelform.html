@@ -12,6 +12,7 @@
 {% extends 'zomato/base.html' %}
 {% block body_block %}
     <div class="container" align="center">
+    <h3>Add Your Hotel</h3>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Cart | FoodJunction</title>
+    <title>Checkout</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -18,9 +18,7 @@
       <tr>
         <th>Item</th>
         <th>Price</th>
-          <th>Quantity</th>
           <th>Veg/Nonveg</th>
-          <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -28,9 +26,8 @@
       <tr class="info">
         <td>{{ txn.item.name }}</td>
         <td>{{ txn.item.price }}</td>
-        <td>{{ txn.quantity }}</td>
       <td>{% if txn.item.veg %}Veg{% else %}Non veg{% endif %}</td>
-      <td><form method="post">{% csrf_token %}<input type="hidden" name="item" value="{{ txn.item.id }}"><input type="submit" class="btn btn-danger" value="Remove" name="remove"></form></td>
+
       </tr>
       {% endfor %}
     </tbody>
@@ -38,10 +35,10 @@
 </div>
 
 <h3 align="center">Your total is ${{ total }}</h3>
+<h3>Address: sector {{ sector }}</h3>
+<h3>Approximate time: {{ duration }} minutes</h3>
+<form method="post">{% csrf_token %}<input class="btn btn-success" type="submit" name="place-order" value="Place Order"></form>
 
-{% if total != 0 %}
-<a class="btn btn-success" href="{% url 'zomato:checkout' user.user_id %}">Checkout</a>
-{% endif %}
 
 </body>
 </html>

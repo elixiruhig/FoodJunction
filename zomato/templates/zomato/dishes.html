@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dishes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+        <div class="well well-lg">
+        <h1>Dishes: </h1>
+        </div>
+        <div class="row">
+        {% for dish in dishes %}
+
+            <div class="column">
+    <div class="card" style="text-align: center;border-top-left-radius: 10px; border-top-right-radius: 10px">
+
+      <div class="container">
+        <h2><a style="color: #4285F4" href = "{% url 'zomato:hotelview' dish.hotel.hotel_id %}">{{dish.name }}</a></h2>
+
+        <p class="title">${{ dish.price}}</p>
+
+      </div>
+    </div>
+  </div>
+
+        {% endfor %}
+        </div>
+
+
+        </div>
+
+</body>
+</html>

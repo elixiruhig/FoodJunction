@@ -101,7 +101,26 @@
             <form method="post">
             {% csrf_token %}
                 <input type="hidden" name="dish" value="{{ dish.dish_id }}">
+                <span> <input class="btn btn-warning" type="Button" id='SubButton' value="-" />&nbsp;<input type="text" name="quantity" id="TextBox" value="1" />&nbsp;<input class="btn btn-warning" type="Button" id='AddButton' value="+" /></span>
                 <input class="btn btn-info" type="submit" name="add-to-cart" value="Add to Cart">
+            <script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('#SubButton').click( function() {
+                    var counter = $('#TextBox').val();
+                    counter-- ;
+                    $('#TextBox').val(counter);
+                });
+            });
+
+            $(document).ready(function(){
+                $('#AddButton').click( function() {
+                    var counter = $('#TextBox').val();
+                    counter++ ;
+                    $('#TextBox').val(counter);
+                });
+            });
+        </script>
             </form>
       {% endif %}
       </div>

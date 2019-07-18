@@ -28,7 +28,11 @@ urlpatterns = [
     path('register/',views.register, name = 'register'),
     url(r'^hotel=(?P<hotel_id>[-\w]+)/$',views.hotelview, name = 'hotelview'),
     url(r'^cart=(?P<user_id>[-\w]+)/$',views.cartview, name = 'cartview'),
-
+    url(r'^checkout=(?P<user_id>[-\w]+)/$',views.checkout, name = 'checkout'),
+    url(r'^orders/$',views.orderview, name = 'orderview'),
+    url(r'^profile/$',views.user_profile, name = 'user_profile'),
+    url(r'^hotels/$',views.hotels, name = 'hotels'),
+    url(r'^dishes/$',views.dishes, name = 'dishes'),
 ]
 if settings.DEBUG:
     #urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

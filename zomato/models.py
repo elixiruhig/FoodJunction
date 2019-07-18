@@ -101,6 +101,7 @@ class Dish(models.Model):
     name = models.CharField(max_length=255)
     veg = models.BooleanField()
     price = models.IntegerField()
+    photo = models.ImageField(upload_to='dish_photos', null=True)
 
     def __str__(self):
         return self.name
@@ -108,11 +109,20 @@ class Dish(models.Model):
 class Transaction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     item = models.ForeignKey(Dish, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
 
 class Cart(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='customer')
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE, null=True)
     transaction_id = models.UUIDField(unique=True, default=uuid.uuid4)
     price = models.IntegerField()
     time = models.DateTimeField(auto_now_add=True)
     duration = models.IntegerField()
+    status = models.CharField(null=True, max_length=255)
+    delivery = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
+class Delivery(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    available = models.BooleanField(default=True)
+    busy = models.BooleanField(default=False)
+    order = models.ForeignKey(Cart,on_delete=models.SET_NULL,null=True, related_name='+')
